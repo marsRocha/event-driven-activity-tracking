@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "MessageRequest",
+  "namespace": "com.marciorocha.event_driven_activity_tracking.dto",
+  "fields": [
+    {"name": "userId", "type": "string"},
+    {"name": "activityType", "type": "string"},
+    {"name": "pageUrl", "type": "string"},
+    {"name": "timestamp", "type": "string"},
+  ]
+}
