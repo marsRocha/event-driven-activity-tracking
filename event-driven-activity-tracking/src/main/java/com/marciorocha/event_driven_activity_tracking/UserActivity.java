@@ -15,13 +15,11 @@ import java.time.LocalDateTime;
 public class UserActivity {
     @Id
     private String id;
-    private String userId;
     private String activityType;
     private String pageUrl;
     private LocalDateTime timestamp;
 
-    public UserActivity(String userId, String activityType, String pageUrl, LocalDateTime timestamp) {
-        this.userId = userId;
+    public UserActivity(String activityType, String pageUrl, LocalDateTime timestamp) {
         this.activityType = activityType;
         this.pageUrl = pageUrl;
         this.timestamp = timestamp;

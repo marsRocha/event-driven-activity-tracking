@@ -6,10 +6,12 @@ import com.marciorocha.event_driven_activity_tracking.dto.MessageRequest;
 import com.marciorocha.event_driven_activity_tracking.kafka.MessageProducer;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST})
 @RestController
 @RequestMapping("/api/v1/activity")
 @AllArgsConstructor
@@ -26,15 +28,15 @@ public class KafkaController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public String sendMessage(@RequestBody MessageRequest messageRequest) {
         messageProducer.sendMessage("user-activity", messageRequest);
         return "Message sent" + messageRequest;
     }
 
-    @GetMapping("/{userId}")
-    public List<UserActivity> getUserActivities(@PathVariable String userId) {
-        return userActivityService.GetUserActivitiesByUserId(userId);
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteAllActivities() {
+        userActivityService.DeleteAllUserActivities();
     }
-
-
 }

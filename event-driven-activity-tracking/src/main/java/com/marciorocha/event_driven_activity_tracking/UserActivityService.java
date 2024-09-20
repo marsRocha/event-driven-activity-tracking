@@ -19,19 +19,18 @@ public class UserActivityService {
         return userActivityRepository.findAll();
     }
 
-    public List<UserActivity> GetUserActivitiesByUserId(String userId) {
-        return userActivityRepository.findByUserId(userId);
-    }
-
     public void RegisterUserActivity(MessageRequest messageRequest) {
 
         UserActivity u = new UserActivity(
-                messageRequest.getUserId(),
                 messageRequest.getActivityType(),
                 messageRequest.getPageUrl(),
                 messageRequest.getTimestamp()
         );
 
         userActivityRepository.insert(u);
+    }
+
+    public void DeleteAllUserActivities() {
+        userActivityRepository.deleteAll();
     }
 }

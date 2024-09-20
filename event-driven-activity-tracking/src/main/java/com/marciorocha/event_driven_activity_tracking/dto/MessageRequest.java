@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MessageRequest {
-    private String userId;
     private String activityType;
     private String pageUrl;
     private LocalDateTime timestamp;
@@ -18,7 +17,6 @@ public class MessageRequest {
     @Override
     public String toString() {
         return "MessageRequest{" +
-                "userId=" + userId +
                 ", activityType='" + activityType + '\'' +
                 ", pageUrl='" + pageUrl + '\'' +
                 ", timestamp=" + timestamp +
